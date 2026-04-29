@@ -111,7 +111,7 @@ const App = () => {
         </div>
 
         {/* cart */}
-        <aside className="bg-white text-[#333] p-8 rounded-3xl shadow-2xl h-fit">
+        <aside className="bg-white text-[#333] p-8 rounded-3xl shadow-2xl h-fit sticky top-10">
           <h2 className="text-2xl font-serif font-bold mb-8 border-b-2 border-gray-100 pb-4 text-[#222831]">Your Order</h2>
           
           {cart.length === 0 ? (
