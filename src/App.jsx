@@ -45,10 +45,22 @@ const App = () => {
     }
   };
 
-  // remove specific item
-  const removeFromCart = (id) => {
-    setCart(cart.filter((item) => item.id !== id));
-  };
+  // updated remove specific item 1 at a time
+const removeFromCart = (itemToRemove) => {
+  setCart((prevCart) => {
+    const existingItem = prevCart.find(item => item.name === itemToRemove.name);
+
+    if (existingItem.quantity === 1) {
+      return prevCart.filter(item => item.name !== itemToRemove.name);
+    }
+
+    return prevCart.map(item =>
+      item.name === itemToRemove.name
+        ? { ...item, quantity: item.quantity - 1 }
+        : item
+    );
+  });
+};
 
   // reset cart
   const clearCart = () => {
