@@ -46,21 +46,21 @@ const App = () => {
   };
 
   // updated remove specific item 1 at a time
-const removeFromCart = (itemToRemove) => {
-  setCart((prevCart) => {
-    const existingItem = prevCart.find(item => item.name === itemToRemove.name);
-
-    if (existingItem.quantity === 1) {
-      return prevCart.filter(item => item.name !== itemToRemove.name);
-    }
-
-    return prevCart.map(item =>
-      item.name === itemToRemove.name
-        ? { ...item, quantity: item.quantity - 1 }
-        : item
-    );
-  });
-};
+  const removeFromCart = (idToRemove) => {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find(item => item.id === idToRemove);
+  
+      if (existingItem && existingItem.quantity === 1) {
+        return prevCart.filter(item => item.id !== idToRemove);
+      }
+  
+      return prevCart.map(item =>
+        item.id === idToRemove
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      );
+    });
+  };
 
   // reset cart
   const clearCart = () => {
